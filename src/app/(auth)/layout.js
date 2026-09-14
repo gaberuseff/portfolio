@@ -1,4 +1,5 @@
 import BackBtn from "@/components/BackBtn";
+import Image from "next/image";
 
 export default function layout({children}) {
   return (
@@ -8,14 +9,24 @@ export default function layout({children}) {
           <BackBtn>Back</BackBtn>
         </div>
         <div className="flex flex-1 items-center justify-center">
-          <div className="w-full max-w-sm">{children}</div>
+          <div className="w-full max-w-sm">
+            {/* {children} */}
+            <p className="text-center text-lg font-semibold text-muted-foreground">
+              The Client Dashboard Under Construction, I'll be back soon with
+              the complete project! 🛠️
+            </p>
+          </div>
         </div>
       </div>
       <div className="relative hidden bg-muted lg:block">
-        <img
-          src="/images/portfolio_page.png"
+        <Image
+          src="/imgs/web-dev.jpg"
           alt="Image"
-          className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+          fill
+          priority
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAJ0lEQVR4nGPY2N74//f33/+vrz34z7Cw7j+DkZExg46ODsP79+8BABi1EClEspwUAAAAAElFTkSuQmCC"
+          className="object-cover"
         />
       </div>
     </div>

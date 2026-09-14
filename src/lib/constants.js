@@ -10,6 +10,7 @@ export const ROUTES = {
   WORKS: "/works",
   ABOUT: "/about",
   CONTACT: "/contact",
+  CERTIFICATES: "/certificates",
   WORKS_SLUG: (slug) => `/works/${slug}`,
 
   LOGIN: "/login",
@@ -29,9 +30,13 @@ export const NAV_LINKS = [
     title: "Works",
     href: ROUTES.WORKS,
   },
+  // {
+  //   title: "Certificates",
+  //   href: ROUTES.CERTIFICATES,
+  // },
   {
-    title: "Contact",
-    href: ROUTES.CONTACT,
+    title: "Login",
+    href: ROUTES.LOGIN,
   },
 ];
 

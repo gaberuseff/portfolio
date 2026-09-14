@@ -1,6 +1,6 @@
 import {ModeToggle} from "@/components/ModeToggle";
 import {buttonVariants} from "@/components/ui/button";
-import {NAV_LINKS} from "@/lib/constants";
+import {NAV_LINKS, ROUTES} from "@/lib/constants";
 import Link from "next/link";
 import MobileNav from "./MobileNav";
 
@@ -28,23 +28,21 @@ function Nav() {
       {/* Desktop / Tablet CTA Button */}
       <div className="hidden sm:block">
         <Link
-          href="/login"
+          href={ROUTES.CONTACT}
           className={
             buttonVariants({
               variant: "default",
               size: "lg",
             }) + " tracking-wider"
           }>
-          Get in Touch
+          Contact Me
         </Link>
       </div>
 
-      {/* Theme Toggle */}
       <div>
         <ModeToggle />
       </div>
 
-      {/* Mobile Menu Toggle & Overlay */}
       <MobileNav />
     </div>
   );
