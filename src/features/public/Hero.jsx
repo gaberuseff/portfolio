@@ -42,8 +42,9 @@ function Hero() {
               delay: 0.3,
               ease: [0.22, 1, 0.36, 1],
             }}>
-            I design and develop thoughtful websites and web applications that
-            combine strong visual design with reliable technology.
+            I'm Gaber Usef, and I design and develop thoughtful websites and web
+            applications that combine strong visual design with reliable
+            technology.
           </motion.p>
 
           <motion.div
@@ -65,7 +66,8 @@ function Hero() {
                 href={link.href}
                 key={link.id}
                 target="_blank"
-                rel="noopener noreferrer">
+                rel="noopener noreferrer"
+                aria-label={`Gaber Usef on ${link.label}`}>
                 <HugeiconsIcon
                   icon={link.icon}
                   size={24}

@@ -10,7 +10,7 @@ function About() {
           <div className="w-fit mx-auto">
             <Image
               src="/imgs/me.jpg"
-              alt="My Photo"
+              alt="Gaber Usef - Frontend Developer & Web Engineer"
               width={500}
               height={500}
               className="rounded-4xl"
@@ -20,7 +20,7 @@ function About() {
             <h2 className="text-xl sm:text-2xl text-center">About Me</h2>
             <div className="flex flex-col gap-6 mt-4">
               <p className="text-sm sm:text-base">
-                I’m Gaber USef, a Frontend Developer who turns ideas into
+                I’m Gaber Usef, a Frontend Developer who turns ideas into
                 modern, high-performance web experiences that are built to solve
                 real business problems.
               </p>

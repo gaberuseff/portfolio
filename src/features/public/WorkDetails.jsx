@@ -48,8 +48,7 @@ export default function WorkDetails({work}) {
                 <div
                   className="text-xs font-mono text-muted-foreground/70 truncate max-w-[200px] 
                   sm:max-w-md px-3 py-1 rounded-md bg-background/50 border border-border/40">
-                  {work.live_link ||
-                    `portfolio.gaberuseff.dev/works/${work.slug}`}
+                  {work.live_link || `gaberuseff.info/works/${work.slug}`}
                 </div>
                 <div className="w-12" />
               </div>

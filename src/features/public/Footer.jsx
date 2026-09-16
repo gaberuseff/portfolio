@@ -14,7 +14,7 @@ function Footer() {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Social link"
+              aria-label={`Gaber Usef on ${link.label}`}
               className="text-muted-foreground hover:text-foreground transition-colors">
               <HugeiconsIcon icon={link.icon} size={18} />
             </a>
