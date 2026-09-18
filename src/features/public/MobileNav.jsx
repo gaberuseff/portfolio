@@ -1,17 +1,6 @@
 "use client";
 
-import {Suspense, useEffect, useState} from "react";
-import Link from "next/link";
-import {usePathname} from "next/navigation";
-import {
-  ArrowUpRight01Icon,
-  Cancel01Icon,
-  Menu01Icon,
-  SparklesIcon,
-} from "@hugeicons/core-free-icons";
-import {HugeiconsIcon} from "@hugeicons/react";
 import {buttonVariants} from "@/components/ui/button";
-import {NAV_LINKS, SOCIAL_LINKS, EMAIL, ROUTES} from "@/lib/constants";
 import {
   Drawer,
   DrawerClose,
@@ -22,8 +11,19 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import {EMAIL, ROUTES, SOCIAL_LINKS} from "@/lib/constants";
+import {
+  ArrowUpRight01Icon,
+  Cancel01Icon,
+  Menu01Icon,
+  SparklesIcon,
+} from "@hugeicons/core-free-icons";
+import {HugeiconsIcon} from "@hugeicons/react";
+import Link from "next/link";
+import {usePathname} from "next/navigation";
+import {Suspense, useEffect, useState} from "react";
 
-function MobileNavInner() {
+function MobileNavInner({navLinks}) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
@@ -39,20 +39,17 @@ function MobileNavInner() {
       showSwipeHandle={true}
       swipeDirection="down">
       <DrawerTrigger
-        className="relative flex items-center justify-center w-10 h-10 rounded-full border border-border/70 bg-background/80 backdrop-blur-md text-foreground hover:bg-accent hover:border-primary/40 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring cursor-pointer"
+        className="relative flex items-center justify-center w-10 h-10 rounded-full border border-border/70 cursor-pointer"
         aria-label="Open navigation menu">
         <HugeiconsIcon icon={Menu01Icon} size={20} />
       </DrawerTrigger>
 
       <DrawerContent className="px-6 pt-4 pb-8 max-h-[85vh]">
-        <DrawerHeader className="text-start p-0 pb-2">
+        <DrawerHeader className="text-start px-1 pb-2 pt-1">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <DrawerTitle className="text-xs uppercase tracking-widest text-muted-foreground font-mono">
-                Navigation
-              </DrawerTitle>
-            </div>
+            <DrawerTitle className="text-xs uppercase tracking-widest text-muted-foreground font-mono">
+              Navigation
+            </DrawerTitle>
             <DrawerClose
               className="p-2 rounded-full hover:bg-muted text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
               aria-label="Close menu">
@@ -65,7 +62,7 @@ function MobileNavInner() {
         </DrawerHeader>
 
         <div className="flex flex-col gap-2 py-4">
-          {NAV_LINKS.map((link, index) => {
+          {navLinks.map((link, index) => {
             const isActive = pathname === link.href;
             return (
               <Link
@@ -148,14 +145,14 @@ function MobileNavInner() {
   );
 }
 
-export default function MobileNav() {
+export default function MobileNav({navLinks}) {
   return (
     <div className="lg:hidden flex items-center">
       <Suspense
         fallback={
           <div className="w-10 h-10 rounded-full border border-border/70 bg-background/80" />
         }>
-        <MobileNavInner />
+        <MobileNavInner navLinks={navLinks} />
       </Suspense>
     </div>
   );

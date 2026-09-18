@@ -1,17 +1,27 @@
-import {Google_Sans_Flex, Geist_Mono} from "next/font/google";
-import "./globals.css";
 import {ThemeProvider} from "@/components/theme-provider";
-import Script from "next/script";
+import QueryProvider from "@/components/query-provider";
+import {Toaster} from "@/components/ui/toast";
 import {SITE_CONFIG} from "@/lib/siteConfig";
+import {Geist_Mono, Google_Sans_Flex, IBM_Plex_Sans_Arabic} from "next/font/google";
+import Script from "next/script";
+import "./globals.css";
 
 const googleSansFlex = Google_Sans_Flex({
   variable: "--font-google-sans-flex",
   subsets: ["latin"],
+  adjustFontFallback: false,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
+  variable: "--font-arabic",
+  subsets: ["arabic"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
 });
 
 export const metadata = {
@@ -78,14 +88,17 @@ export default function RootLayout({children}) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${googleSansFlex.variable} ${geistMono.variable} h-full antialiased`}>
+      className={`${googleSansFlex.variable} ${geistMono.variable} ${ibmPlexSansArabic.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange>
-          {children}
+          <QueryProvider>
+            <Toaster />
+            {children}
+          </QueryProvider>
         </ThemeProvider>
         <Script id="clarity-script" strategy="afterInteractive">
           {`

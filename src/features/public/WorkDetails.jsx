@@ -1,8 +1,5 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import {motion} from "motion/react";
 import {
   ArrowRight02Icon,
   ArrowUpRight01Icon,
@@ -32,12 +29,7 @@ export default function WorkDetails({work}) {
         <div className="flex flex-col gap-16 md:gap-24">
           {/* Main Showcase Image with Browser Mockup Frame */}
           {work.image && (
-            <motion.div
-              initial={{opacity: 0, y: 30, filter: "blur(8px)"}}
-              whileInView={{opacity: 1, y: 0, filter: "blur(0px)"}}
-              viewport={{once: true, margin: "-50px"}}
-              transition={{duration: 0.9, ease: [0.22, 1, 0.36, 1]}}
-              className="group relative rounded-2xl md:rounded-3xl border border-border/80 bg-card overflow-hidden shadow-2xl shadow-primary/5">
+            <div className="group relative rounded-2xl md:rounded-3xl border border-border/80 bg-card overflow-hidden shadow-2xl shadow-primary/5">
               {/* Browser window header bar */}
               <div className="flex items-center justify-between px-4 py-3 border-b border-border/60 bg-muted/40 backdrop-blur-sm">
                 <div className="flex items-center gap-2">
@@ -64,16 +56,11 @@ export default function WorkDetails({work}) {
                   className="object-cover object-top"
                 />
               </div>
-            </motion.div>
+            </div>
           )}
 
           {/* Project Metadata Grid */}
-          <motion.div
-            initial={{opacity: 0, y: 20}}
-            whileInView={{opacity: 1, y: 0}}
-            viewport={{once: true, margin: "-40px"}}
-            transition={{duration: 0.6}}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6 sm:p-8 rounded-2xl md:rounded-3xl border border-border/70 bg-card/60 backdrop-blur-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6 sm:p-8 rounded-2xl md:rounded-3xl border border-border/70 bg-card/60 backdrop-blur-sm">
             {/* Role */}
             <div className="flex flex-col gap-2">
               <span className="text-xs uppercase tracking-widest text-muted-foreground font-mono">
@@ -140,16 +127,11 @@ export default function WorkDetails({work}) {
                 )}
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Key Features Section */}
           {featuresList.length > 0 && (
-            <motion.div
-              initial={{opacity: 0, y: 20}}
-              whileInView={{opacity: 1, y: 0}}
-              viewport={{once: true, margin: "-40px"}}
-              transition={{duration: 0.6}}
-              className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6">
               <div className="flex items-center gap-2">
                 <HugeiconsIcon
                   icon={SparklesIcon}
@@ -177,16 +159,11 @@ export default function WorkDetails({work}) {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           )}
 
           {/* Bottom CTA & Navigation Banner */}
-          <motion.div
-            initial={{opacity: 0, y: 25}}
-            whileInView={{opacity: 1, y: 0}}
-            viewport={{once: true, margin: "-40px"}}
-            transition={{duration: 0.7}}
-            className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-border bg-card p-8 sm:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-border bg-card p-8 sm:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-3xl pointer-events-none rounded-full" />
 
             <div className="flex flex-col gap-2 max-w-xl z-10">
@@ -227,7 +204,7 @@ export default function WorkDetails({work}) {
                 <span>All Projects</span>
               </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </SectionWrapper>
     </div>

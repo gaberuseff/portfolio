@@ -1,15 +1,26 @@
 import {ModeToggle} from "@/components/ModeToggle";
 import {buttonVariants} from "@/components/ui/button";
-import {NAV_LINKS, ROUTES} from "@/lib/constants";
+import {DEFAULT_REDIRECTS, getUserRole, ROUTES} from "@/lib/constants";
 import Link from "next/link";
 import MobileNav from "./MobileNav";
 
-function Nav() {
+function Nav({user}) {
+  const navLinks = [
+    {title: "Home", href: ROUTES.HOME},
+    {title: "Works", href: ROUTES.WORKS},
+    user
+      ? {
+          title: "Dashboard",
+          href: DEFAULT_REDIRECTS(getUserRole(user)),
+        }
+      : {title: "Login", href: ROUTES.LOGIN},
+  ];
+
   return (
     <div className="flex items-center gap-2 sm:gap-3">
       {/* Desktop Links */}
       <ul className="hidden lg:flex items-center justify-end gap-2">
-        {NAV_LINKS.map((link) => (
+        {navLinks.map((link) => (
           <li key={link.href}>
             <Link
               className={
@@ -25,7 +36,6 @@ function Nav() {
         ))}
       </ul>
 
-      {/* Desktop / Tablet CTA Button */}
       <div className="hidden sm:block">
         <Link
           href={ROUTES.CONTACT}
@@ -43,7 +53,7 @@ function Nav() {
         <ModeToggle />
       </div>
 
-      <MobileNav />
+      <MobileNav navLinks={navLinks} />
     </div>
   );
 }

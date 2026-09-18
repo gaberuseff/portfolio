@@ -1,7 +1,7 @@
 import BackBtn from "@/components/BackBtn";
 import Image from "next/image";
 
-export default function layout({children}) {
+export default async function layout({children}) {
   return (
     <div className="grid min-h-svh lg:grid-cols-2">
       <div className="flex flex-col gap-4 p-6 md:p-10">
@@ -9,12 +9,12 @@ export default function layout({children}) {
           <BackBtn>Back</BackBtn>
         </div>
         <div className="flex flex-1 items-center justify-center">
-          <div className="w-full max-w-sm">
-            {/* {children} */}
-            <p className="text-center text-lg font-semibold text-muted-foreground">
+          <div className="w-full max-w-md lg:max-w-lg">
+            {children}
+            {/* <p className="text-center text-lg font-semibold text-muted-foreground">
               The Client Dashboard Under Construction, I'll be back soon with
               the complete project! 🛠️
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
