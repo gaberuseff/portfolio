@@ -26,8 +26,8 @@ export function LoginForm({className, ...props}) {
   } = useForm({
     mode: "onTouched",
     defaultValues: {
-      email: "",
-      password: "",
+      email: "dev.gaber@gmail.com",
+      password: "12345678",
     },
   });
 
