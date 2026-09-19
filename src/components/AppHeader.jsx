@@ -6,7 +6,7 @@ import {Home} from "@hugeicons/core-free-icons/index";
 import {HugeiconsIcon} from "@hugeicons/react";
 import Link from "next/link";
 
-function Header() {
+function AppHeader() {
   return (
     <header
       className="sticky top-0 z-30 h-16 border-b border-border/80 px-4 md:px-6 
@@ -15,7 +15,7 @@ function Header() {
         <Link
           href={ROUTES.HOME}
           className={buttonVariants({size: "icon", variant: "secondary"})}>
-          <HugeiconsIcon icon={Home} className="" />
+          <HugeiconsIcon icon={Home} />
         </Link>
         <ModeToggle />
         <LogoutBtn />
@@ -24,4 +24,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default AppHeader;

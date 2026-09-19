@@ -1,6 +1,6 @@
 "use server";
 
-import {DEFAULT_REDIRECTS, ROUTES} from "@/lib/constants";
+import {getDashboardRoute, ROUTES} from "@/lib/constants";
 import {redirect} from "next/navigation";
 import {createClient} from "./supabase/server";
 
@@ -88,20 +88,18 @@ export async function login(formData) {
       };
     }
 
-    const role = profile?.role || "none";
-    const redirectTo = DEFAULT_REDIRECTS(role);
-
-    if (role === "none") {
+    if (!profile?.role) {
       return {
-        success: false,
-        error: "You are not authorized to login.",
+        error: "No role assigned to this account. Access denied.",
       };
     }
+
+    const redirectTo = getDashboardRoute(profile.role);
 
     return {
       success: true,
       redirectTo,
-      role,
+      role: profile.role,
     };
   } catch (err) {
     return {

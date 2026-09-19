@@ -42,20 +42,9 @@ function Drawer({
 }
 
 function DrawerTrigger({
-  asChild,
-  children,
-  render,
   ...props
 }) {
-  return (
-    <DrawerPrimitive.Trigger
-      data-slot="drawer-trigger"
-      render={asChild ? children : render}
-      {...props}
-    >
-      {asChild ? undefined : children}
-    </DrawerPrimitive.Trigger>
-  )
+  return <DrawerPrimitive.Trigger data-slot="drawer-trigger" {...props} />
 }
 
 function DrawerPortal({
@@ -65,20 +54,9 @@ function DrawerPortal({
 }
 
 function DrawerClose({
-  asChild,
-  children,
-  render,
   ...props
 }) {
-  return (
-    <DrawerPrimitive.Close
-      data-slot="drawer-close"
-      render={asChild ? children : render}
-      {...props}
-    >
-      {asChild ? undefined : children}
-    </DrawerPrimitive.Close>
-  )
+  return <DrawerPrimitive.Close data-slot="drawer-close" {...props} />
 }
 
 function DrawerOverlay({
@@ -170,7 +148,7 @@ function DrawerContent({
           <DrawerPrimitive.Content
             data-slot="drawer-content"
             className={cn(
-              "flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain transition-opacity duration-300 ease-[cubic-bezier(0.45,1.005,0,1.005)] select-text group-data-nested-drawer-open/drawer-popup:opacity-0 group-data-nested-drawer-swiping/drawer-popup:opacity-100 group-data-swiping/drawer-popup:select-none"
+              "flex min-h-0 flex-1 flex-col overflow-hidden overscroll-contain rounded-[inherit] transition-opacity duration-300 ease-[cubic-bezier(0.45,1.005,0,1.005)] select-text group-data-nested-drawer-open/drawer-popup:opacity-0 group-data-nested-drawer-swiping/drawer-popup:opacity-100 group-data-swiping/drawer-popup:select-none"
             )}
           >
             {children}

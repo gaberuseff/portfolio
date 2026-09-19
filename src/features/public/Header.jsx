@@ -1,11 +1,11 @@
+import {getCurrentUserProfile} from "@/services/apiAuth";
+import {Suspense} from "react";
 import Logo from "./Logo";
 import Nav from "./Nav";
-import {getCurrentUser} from "@/services/apiAuth";
-import {Suspense} from "react";
 
 async function NavWithUser() {
-  const user = await getCurrentUser();
-  return <Nav user={user} />;
+  const account = await getCurrentUserProfile();
+  return <Nav profile={account?.profile || null} />;
 }
 
 function Header() {
@@ -13,7 +13,7 @@ function Header() {
     <header className="sticky top-0 z-50 w-full px-3 sm:px-6 py-4 bg-background/80 backdrop-blur-md">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         <Logo />
-        <Suspense fallback={<Nav user={null} />}>
+        <Suspense fallback={<Nav profile={null} />}>
           <NavWithUser />
         </Suspense>
       </div>

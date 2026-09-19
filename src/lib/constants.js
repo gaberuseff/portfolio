@@ -5,6 +5,36 @@ import {
   Linkedin02Icon,
 } from "@hugeicons/core-free-icons/index";
 
+export const ROLES = {
+  ADMIN: "admin",
+  CLIENT: "client",
+};
+
+export const PROJECT_STATUS = {
+  NOT_STARTED: "not-started",
+  PLANNING: "planning",
+  IN_PROGRESS: "in_progress",
+  ON_HOLD: "on_hold",
+  COMPLETED: "completed",
+  CANCELLED: "cancelled",
+};
+
+export const PROJECT_STATUSES = [
+  {value: "not-started", label: "Not Started"},
+  {value: "planning", label: "Planning"},
+  {value: "in_progress", label: "In Progress"},
+  {value: "on_hold", label: "On Hold"},
+  {value: "completed", label: "Completed"},
+  {value: "cancelled", label: "Cancelled"},
+];
+
+export const CURRENCIES = [
+  {value: "USD", label: "USD ($) - US Dollar"},
+  {value: "EGP", label: "EGP (ج.م) - Egyptian Pound"},
+  {value: "SAR", label: "SAR (ر.س) - Saudi Riyal"},
+  {value: "AED", label: "AED (د.إ) - UAE Dirham"},
+];
+
 export const ROUTES = {
   HOME: "/",
   WORKS: "/works",
@@ -12,38 +42,25 @@ export const ROUTES = {
   CONTACT: "/contact",
   CERTIFICATES: "/certificates",
   WORKS_SLUG: (slug) => `/works/${slug}`,
-  ADMIN_ROLE: "admin",
-  CLIENT_ROLE: "client",
   LOGIN: "/login",
   SIGNUP: "/signup",
   FORGOT_PASSWORD: "/forgot-password",
   UNAUTHORIZED: "/unauthorized",
+  ADMIN_DASHBOARD: "/admin/dashboard",
+  CLIENT_DASHBOARD: "/client/projects",
+  NEW_PROJECT: "/admin/projects/new",
+  PROJECTS: "/admin/projects",
 };
 
-export const CLIENT_ROUTES = {
-  PROJECTS: "/client/projects",
+// Return the appropriate dashboard route according to user role
+export const getDashboardRoute = (role) => {
+  return role === ROLES.ADMIN
+    ? ROUTES.ADMIN_DASHBOARD
+    : ROUTES.CLIENT_DASHBOARD;
 };
 
-export const getUserRole = (user) => {
-  if (!user) return null;
-  const metaRole = user.user_metadata?.role || user.app_metadata?.role;
-  if (metaRole && metaRole !== "authenticated") return metaRole;
-  return "client";
-};
-
-export const ADMIN_REDIRECT = "/admin/dashboard";
-export const CLIENT_REDIRECT = "/client/projects";
-
-export const DEFAULT_REDIRECTS = (role) => {
-  switch (role) {
-    case "admin":
-      return ADMIN_REDIRECT;
-    case "client":
-      return CLIENT_REDIRECT;
-    default:
-      return ROUTES.HOME;
-  }
-};
+// Kept for backward compatibility
+export const DEFAULT_REDIRECTS = getDashboardRoute;
 
 export const EMAIL = "dev.gaber@gmail.com";
 export const WHATSAPP_URL = "https://wa.me/201500223440";

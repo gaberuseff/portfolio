@@ -1,17 +1,17 @@
 import {ModeToggle} from "@/components/ModeToggle";
 import {buttonVariants} from "@/components/ui/button";
-import {DEFAULT_REDIRECTS, getUserRole, ROUTES} from "@/lib/constants";
+import {getDashboardRoute, ROUTES} from "@/lib/constants";
 import Link from "next/link";
 import MobileNav from "./MobileNav";
 
-function Nav({user}) {
+function Nav({profile}) {
   const navLinks = [
     {title: "Home", href: ROUTES.HOME},
     {title: "Works", href: ROUTES.WORKS},
-    user
+    profile
       ? {
           title: "Dashboard",
-          href: DEFAULT_REDIRECTS(getUserRole(user)),
+          href: getDashboardRoute(profile?.role),
         }
       : {title: "Login", href: ROUTES.LOGIN},
   ];

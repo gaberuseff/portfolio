@@ -33,29 +33,16 @@ export default function UnauthorizedPage() {
 
         {/* Description */}
         <p className="text-base sm:text-lg font-light text-muted-foreground pt-4 max-w-md leading-relaxed">
-          You don&apos;t have permission to access this page. Please sign in with
-          an authorized account or head back to home.
+          You don&apos;t have permission to access this page. Please sign in
+          with an authorized account or head back to home.
         </p>
 
         {/* Action Buttons */}
         <div className="pt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4 w-full">
           <Link
-            href={ROUTES.LOGIN}
-            className={
-              buttonVariants({
-                variant: "default",
-                size: "lg",
-              }) + " gap-2"
-            }>
-            <LogIn className="size-4" />
-            <span>Sign In</span>
-          </Link>
-
-          <Link
             href={ROUTES.HOME}
             className={
               buttonVariants({
-                variant: "outline",
                 size: "lg",
               }) + " gap-2"
             }>
